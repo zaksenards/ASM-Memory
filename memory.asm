@@ -6,7 +6,7 @@ section .data
     msg_sucess_size equ $-msg_sucess_text
     
     msg_failure_text  db "Failed to alocate memory",0xa
-    msg_faulure_size equ $-msg_failure_text
+    msg_failure_size equ $-msg_failure_text
 
 section .text
     global _start
@@ -31,7 +31,7 @@ _start:
     int 0x80
     
     ; Checks the return code of sys_brk
-    ; so it exits if the code is not zero
+    ; so it exits if the code is less than zero
     cmp eax, 0x0
     jl _failure
     
